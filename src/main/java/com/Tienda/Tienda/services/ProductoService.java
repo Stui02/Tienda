@@ -4,19 +4,18 @@
  */
 package com.Tienda.Tienda.services;
 
-
-import com.Tienda.Tienda.domain.Categoria;
+import com.Tienda.Tienda.domain.Producto;
 import java.util.List;
 
-public interface CategoriaService {
+public interface ProductoService {
 
     // Se obtiene los registros de la tabla vategoria en un ArrayList
-    // de objetos Categoria, todos o solo los activos
-    public List<Categoria> getCategorias(boolean activos);
+    // de objetos Producto, todos o solo los activos
+    public List<Producto> getProductos(boolean activos);
 
-    public Categoria getCategoria(Categoria categoria);
+    public Producto getProducto(Producto producto);
 
-    public void save(Categoria categoria);
+    public void save(Producto producto);
 
-    public void delete(Categoria categoria);
+    public void delete(Producto producto);
 }
