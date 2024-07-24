@@ -45,4 +45,22 @@ public class ProductoServicelmpl implements ProductoService {
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> consulta1(double precioInf, double precioSup) {
+        return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> consulta2(double precioInf, double precioSup) {
+        return productoDao.consultaJPQL(precioInf, precioSup);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> consulta3(double precioInf, double precioSup) {
+        return productoDao.consultaSQL(precioInf, precioSup);
+    }
 }

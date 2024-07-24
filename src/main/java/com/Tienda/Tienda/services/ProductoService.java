@@ -18,4 +18,12 @@ public interface ProductoService {
     public void save(Producto producto);
 
     public void delete(Producto producto);
+    //Recupera un listado de registros producto filtrados por precio y ordenados por descripciòn
+    public List<Producto> consulta1(double precioInf, double precioSup);
+    
+    public List<Producto> consulta2(double precioInf, double precioSup);
+    
+    public List<Producto> consulta3(double precioInf, double precioSup);
+    
+    
 }
