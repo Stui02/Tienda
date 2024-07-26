@@ -15,13 +15,13 @@ public interface ProductoDao extends JpaRepository<Producto, Long> {
             double precioInf,
             double precioSup);
 
-    @Query(value = "SELECT a FROM Producto a"
+    @Query(value = "SELECT a FROM Producto a "
             + "WHERE a.precio BETWEEN :precioInf AND :precioSup "
             + "ORDER BY a.descripcion ASC")
     public List<Producto> consultaJPQL(double precioInf, double precioSup);
 
     @Query(nativeQuery=true,
-            value = "SELECT a FROM Producto a"
+            value = "SELECT a FROM Producto a "
             + "WHERE a.precio BETWEEN :precioInf AND :precioSup "
             + "ORDER BY a.descripcion ASC")
     public List<Producto> consultaSQL(double precioInf, double precioSup);
