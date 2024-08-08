@@ -2,8 +2,10 @@ package com.Tienda.Tienda;
 
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
@@ -47,6 +49,16 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
 
+    }
+    
+    /*Este metodo se utiliza al enviar correos de activacion segun el idioma*/
+    
+    @Bean("messageSource")
+    public MessageSource messageSource (){
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasenames("messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
     }
 
     /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
