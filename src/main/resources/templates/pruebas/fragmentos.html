@@ -31,17 +31,35 @@
                              height="200"
                              alt="alt"
                              />    
+                        <figcaption class="d-flex justify-content-around">
+                            <div>
+                                ¢[[${p.precio}]] ([[${p.existencias}]])
+                            </div>
+                            <div>
+                                <form>
+                                    <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
+                                    
+                                    <input type="hidden" name="existencias" th:value="${p.existencias}" />
+                                    <button class="btn btn-light"
+                                            type="button"
+                                            onclick="addCart(this.form)">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </figcaption >
                     </figure>
-                    <figcaption style="text-align: center">
-                        ¢[[${p.precio}]] ([[${p.existencias}]])
-                    </figcaption >
+
                     <div class="card-header" style="text-align: center">
                         <h4>[[${p.descripcion}]]</h4>
                     </div>
+
                     <div class="card-body">
                         <p>[[${p.detalle}]]</p>
                     </div>
                 </div>
+            </div>
         </section>
 
         <!-- 3 Sección para crear los filtros-->        
@@ -79,8 +97,8 @@
                         </div>   
                     </form>
                 </div>
-                
-                  <div class="card m-2">
+
+                <div class="card m-2">
                     <form method="post"
                           th:action="@{/pruebas/consulta2}">
                         <div class="card-header text-center bg-primary text-white">
@@ -112,8 +130,8 @@
                         </div>   
                     </form>
                 </div>
-                
-                  <div class="card m-2">
+
+                <div class="card m-2">
                     <form method="post"
                           th:action="@{/pruebas/consulta3}">
                         <div class="card-header text-center bg-primary text-white">
