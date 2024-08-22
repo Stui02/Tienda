@@ -22,6 +22,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
@@ -50,11 +52,10 @@ public class ProjectConfig implements WebMvcConfigurer {
         registro.addInterceptor(localeChangeInterceptor());
 
     }
-    
+
     /*Este metodo se utiliza al enviar correos de activacion segun el idioma*/
-    
     @Bean("messageSource")
-    public MessageSource messageSource (){
+    public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("messages");
         messageSource.setDefaultEncoding("UTF-8");
@@ -131,6 +132,18 @@ public class ProjectConfig implements WebMvcConfigurer {
             throws Exception {
         build.userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+    /* El siguiente método se utilizar para publicar en la nube, independientemente  */
+    @Bean
+    public SpringResourceTemplateResolver templateResolver_0() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setPrefix("classpath:/templates");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        resolver.setOrder(0);
+        resolver.setCheckExistence(true);
+        return resolver;
     }
 
 }
